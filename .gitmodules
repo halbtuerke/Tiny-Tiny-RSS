@@ -1,0 +1,3 @@
+[submodule "g2ttrss-mobile"]
+	path = g2ttrss-mobile
+	url = git://github.com/g2ttrss/g2ttrss-mobile.git

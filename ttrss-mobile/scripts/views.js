@@ -745,6 +745,15 @@ define(['jquery', 'models', 'templates','conf','utils'],
       // update the view parts
       this.updateBackButton();
 
+      // update previous/next links at the bottom
+      if (models.articlesModel.length <= 1){
+        // collection empty, update it
+        models.articlesModel.on("sync", this.renderPrevNext, this);
+        models.articlesModel.fetch();
+      } else {
+        this.renderPrevNext();
+      }
+
       this.updateLink();
       if (! this.model.has("link")){
         this.model.once("change:link", this.updateLink, this);
@@ -787,15 +796,6 @@ define(['jquery', 'models', 'templates','conf','utils'],
                         this.updateContent, this);
         // do the fetch now!
         this.model.fetch();
-      }
-
-      // update previous/next links at the bottom
-      if (models.articlesModel.length <= 1){
-        // collection empty, update it
-        models.articlesModel.on("sync", this.renderPrevNext, this);
-        models.articlesModel.fetch();
-      } else {
-        this.renderPrevNext();
       }
 
       this.renderUnreadToggleButton();

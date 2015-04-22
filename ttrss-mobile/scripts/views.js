@@ -918,7 +918,7 @@ define(['jquery', 'models', 'templates','conf','utils'],
       if (this.model.get("marked")){
         but.html("Remove star");
       } else {
-        but.html("Mark as starred");
+        but.html("Star");
       }
 
     },

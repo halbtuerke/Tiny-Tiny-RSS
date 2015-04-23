@@ -11,7 +11,7 @@ div#read div[data-role=content]>div.header>h3{
 }
 
 div#read div[data-role=content]>div.header{
-  margin-bottom: 2em;
+  margin-bottom: 0em;
 }
 
 div#read div[data-role=content]>div.main img,

@@ -745,6 +745,16 @@ define(['jquery', 'models', 'templates','conf','utils'],
       // update the view parts
       this.updateBackButton();
 
+
+      // update previous/next links at the bottom
+      if (models.articlesModel.length <= 1){
+        // collection empty, update it
+        models.articlesModel.on("sync", this.renderPrevNext, this);
+        models.articlesModel.fetch();
+      } else {
+        this.renderPrevNext();
+      }
+
       this.updateLink();
       if (! this.model.has("link")){
         this.model.once("change:link", this.updateLink, this);
@@ -787,15 +797,6 @@ define(['jquery', 'models', 'templates','conf','utils'],
                         this.updateContent, this);
         // do the fetch now!
         this.model.fetch();
-      }
-
-      // update previous/next links at the bottom
-      if (models.articlesModel.length <= 1){
-        // collection empty, update it
-        models.articlesModel.on("sync", this.renderPrevNext, this);
-        models.articlesModel.fetch();
-      } else {
-        this.renderPrevNext();
       }
 
       this.renderUnreadToggleButton();
@@ -965,7 +966,7 @@ define(['jquery', 'models', 'templates','conf','utils'],
         html += tpl.gridLeftButton({
           href:   ln + prevArt.id,
           cl:  "",
-          title:  prevArt.get("title")
+          title:  ""
         });
         
         hasPrev = true;
@@ -986,7 +987,7 @@ define(['jquery', 'models', 'templates','conf','utils'],
         html += tpl.gridRightButton({
           href:   ln + nextArt.id,
           cl:  "",
-          title:  nextArt.get("title")
+          title:  ""
         });
 
         hasNext = true;
@@ -1005,13 +1006,13 @@ define(['jquery', 'models', 'templates','conf','utils'],
 
         // do we already have the links?
         var $links =
-          this.$("div:jqmData(role='content') > div.main > div.ui-grid-a");
+          this.$("div:jqmData(role='content') > div.header > div.ui-grid-a");
 
         if ($links.length == 1){
           $links.replaceWith(html);
-          this.$("div:jqmData(role='content') > div.main").trigger('create');
+          this.$("div:jqmData(role='content') > div.header").trigger('create');
         } else {
-          this.$("div:jqmData(role='content') > div.main")
+          this.$("div:jqmData(role='content') > div.header")
             .append(html).trigger('create');
         }
       }

@@ -74,3 +74,8 @@ div#read div[data-role=content]>div.main pre {
   padding-top: 0em;
   padding-bottom: 0em;
 }
+
+
+#read > div.ui-content > div.header > div.ui-grid-a span.ui-btn-inner {
+    padding: 0.2em 20px;
+}

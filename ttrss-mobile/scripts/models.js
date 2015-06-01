@@ -40,8 +40,8 @@ define(['api','backbone','utils'],
 
     defaults: {
       articlesNumber: 10,
-      articlesOldestFirst: false,
-      onlyUnread: false
+      articlesOldestFirst: true,
+      onlyUnread: true
     },
 
     validate: function(attrs, options){

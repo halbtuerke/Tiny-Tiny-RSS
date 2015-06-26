@@ -833,7 +833,7 @@ define(['jquery', 'models', 'templates','conf','utils'],
     },
 
     updateTitle: function(){
-      var title = this.model.get("title");
+      var title = this.model.get("title").substring(0, 10) + "…";
       if (! title){
         title = "Title loading...";
       }

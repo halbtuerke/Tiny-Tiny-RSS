@@ -528,6 +528,11 @@ define(['jquery', 'models', 'templates','conf','utils'],
       var href = Backbone.history.fragment;
       href = "#" + href.substr(0, href.lastIndexOf("/"));
 
+      // Remove '#' if it's the only thing present
+      if (href === "#") {
+          href = "";
+      }
+
       this.$("div:jqmData(role='header') a:first").attr("href", href);
     },
 

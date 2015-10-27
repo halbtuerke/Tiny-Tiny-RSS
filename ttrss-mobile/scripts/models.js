@@ -39,7 +39,7 @@ define(['api','backbone','utils'],
     }, //sync
 
     defaults: {
-      articlesNumber: 10,
+      articlesNumber: 200,
       articlesOldestFirst: true,
       onlyUnread: true
     },
